@@ -11,6 +11,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+(iswitchb-mode 1)
+
 ;; Add emacs folder to the path
 (add-to-list 'load-path "~/emacs/")
 
@@ -25,4 +27,19 @@
 
 (global-set-key [f2] 'find-dired)
 
+(defun open-with-android-studio()
+  (interactive)
+  (when buffer-file-name
+  (w32-shell-execute "open" "studio64.exe" buffer-file-name)))
 
+(global-set-key [f3] 'open-with-android-studio)
+
+(defun w32explore (file)
+    "Open Windows Explorer to FILE (a file or a folder)."
+    (interactive "fFile: ")
+    (let ((w32file (subst-char-in-string ?/ ?\\ (expand-file-name file))))
+      (if (file-directory-p w32file)
+          (w32-shell-execute "explore" w32file "/e,/select,")
+        (w32-shell-execute "open" "explorer" (concat "/e,/select," w32file)))))
+
+(global-set-key [f4] 'w32explore)
