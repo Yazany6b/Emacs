@@ -43,3 +43,6 @@
         (w32-shell-execute "open" "explorer" (concat "/e,/select," w32file)))))
 
 (global-set-key [f4] 'w32explore)
+
+
+(global-unset-key "\C-z")
