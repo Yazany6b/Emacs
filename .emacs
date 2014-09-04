@@ -46,3 +46,12 @@
 
 
 (global-unset-key "\C-z")
+
+;; create an invisible backup directory and make the backups also invisable
+(defun make-backup-file-name (filename)
+(defvar backups-dir "~/.backups/")
+(make-directory backups-dir t)
+(expand-file-name
+(concat backups-dir "." (file-name-nondirectory filename) "~")
+(file-name-directory filename)))
+
