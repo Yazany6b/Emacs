@@ -55,3 +55,12 @@
 (concat backups-dir "." (file-name-nondirectory filename) "~")
 (file-name-directory filename)))
 
+
+;; Color-theme
+(load "color-theme-6.6.0/color-theme-autoloads.el")
+
+;; Pick a color-theme
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-jsc-light2)
+
