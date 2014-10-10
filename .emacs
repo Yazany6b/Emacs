@@ -65,3 +65,4 @@
 (color-theme-initialize)
 (color-theme-jsc-light2)
 
+(setq inhibit-startup-message t)
