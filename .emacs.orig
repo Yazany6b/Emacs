@@ -56,12 +56,20 @@
 (concat backups-dir "." (file-name-nondirectory filename) "~")
 (file-name-directory filename)))
 
+<<<<<<< HEAD
 (load "php-mode.el")
 
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+=======
+
+;; Color-theme
+(load "color-theme-6.6.0/color-theme-autoloads.el")
+
+;; Pick a color-theme
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-jsc-light2)
 
+>>>>>>> 4a8f0307ce666b35972fbd8b98652aa0975ef018
