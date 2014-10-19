@@ -64,3 +64,4 @@
 (color-theme-initialize)
 (color-theme-jsc-light2)
 
+(load "undo-tree.el")
