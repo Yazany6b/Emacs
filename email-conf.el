@@ -13,7 +13,7 @@
  (setq smtpmail-smtp-service 465)
  (setq smtpmail-debug-info t) ; only to debug problems
  (setq smtpmail-auth-credentials  ; or use ~/.authinfo
-          '(("smtp.mail.yahoo.com" 465 "yazanse@yahoo.com" "Y6b@gamer")))
+          '(("smtp.mail.yahoo.com" 465 "yazanse@yahoo.com" nil)))
 
 (setenv "MAILHOST" "pop.mail.yahoo.com")
  (setq rmail-primary-inbox-list '("pop://yazanse@yahoo.com")
