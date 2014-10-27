@@ -1,0 +1,10 @@
+* Chapter 1
+** living is everything
+*** TODO Take every chance to do interesing things
+*** TODO Apply you skills for good
+* Chapter 2
+** Never Better
+*** TODO Swap it with other
+*** TODO Do it harder
+    SCHEDULED: <2014-11-22 Sat>
+*** TODO Never easy things

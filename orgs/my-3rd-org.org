@@ -1,0 +1,7 @@
+* Index
+** Scheduled Things
+*** TODO None Scheduled
+*** TODO Scheduled to be finish after a minute 
+    SCHEDULED: <2014-12-02 Tue>
+*** TODO Scheduled to be finished after a while
+    SCHEDULED: <2014-12-05 Fri>

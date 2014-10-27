@@ -3,7 +3,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark))))
+ '(custom-enabled-themes (quote (tango-dark)))
+ '(org-agenda-files nil)
+ '(send-mail-function nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -13,9 +15,11 @@
 
 (iswitchb-mode 1)
 
+;;(server-start)
+
 ;; Add emacs folder to the path
 (add-to-list 'load-path "~/emacs/")
-
+(add-to-list 'load-path "~/emacs/org-lisp/")
 
 (setq grep-find-command "find . -name '.svn' -prune -o -name 'data' -prune -o -name '*' ! -name '*~' -print0 | xargs -0 grep -H -n -i -s ")
 
@@ -46,6 +50,7 @@
 
 
 (global-unset-key "\C-z")
+(global-unset-key "\C-x z")
 
 ;; create an invisible backup directory and make the backups also invisable
 (defun make-backup-file-name (filename)
@@ -55,13 +60,16 @@
 (concat backups-dir "." (file-name-nondirectory filename) "~")
 (file-name-directory filename)))
 
-
-;; Color-theme
-(load "color-theme-6.6.0/color-theme-autoloads.el")
-
-;; Pick a color-theme
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-jsc-light2)
-
+(load "email-conf.el")
 (load "undo-tree.el")
+(load "web-mode.el")
+(load "auto-complete-nxml.el")
+
+;;initiate the org mode and assign keys to it
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+(setq org-agenda-files '("~/emacs/orgs/"))
