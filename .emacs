@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes (quote ("0e7397d2f61fc2144d262eba45f1b3c7893463831b9cbeaaf480ea613225a25f" default)))
  '(org-agenda-files nil)
  '(send-mail-function nil))
 (custom-set-faces
@@ -63,7 +64,18 @@
 (load "email-conf.el")
 (load "undo-tree.el")
 (load "web-mode.el")
+(load "web-search.el")
 (load "auto-complete-nxml.el")
+
+;;send email shortcut
+
+(define-key global-map "\C-ce" 'message-send)
+
+(autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+(setq inhibit-startup-message t)
 
 ;;initiate the org mode and assign keys to it
 (require 'org)
