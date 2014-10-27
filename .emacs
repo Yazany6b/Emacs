@@ -72,4 +72,4 @@
 (setq org-log-done t)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(setq org-agenda-files '("~/emacs/orgs/"))
+(setq org-agenda-files '("~/orgs/"))
