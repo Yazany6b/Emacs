@@ -59,7 +59,7 @@
 
 (add-hook 'w3-parse-hooks 'w3-tidy-page)
 
-(defvar w3-fast-parse-tidy-program "~/emacs/exec/")
+(defvar w3-fast-parse-tidy-program "~/emacs/exec/tidy.exe")
 
 (defun w3-tidy-page (&optional buff)
     "Use html tidy to clean up the HTML in the current buffer."
@@ -75,3 +75,6 @@
 			     "-quiet" "-clean" "-bare" "-omit"
 			     "--drop-proprietary-attributes" "yes" "--hide-comments" "yes"
 			   )))
+
+
+(global-set-key (kbd "C-c t") 'w3-tidy-page)
