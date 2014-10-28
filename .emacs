@@ -85,3 +85,6 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-agenda-files '("~/orgs/"))
+
+(require 'ido)
+(ido-mode t)
