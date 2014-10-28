@@ -42,7 +42,49 @@
 
 (global-set-key (kbd "C-c s") 'net-search-stackoverflow)
 
-;;http://www.youtube.com/results?search_query=smart
+;;search android dev site
+
+(defun net-search-androiddev ()
+  "Android Dev the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "http://developer.android.com/index.html#q="
+    (url-hexify-string (if mark-active
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "Android-Dev: "))))))
+
+(global-set-key (kbd "C-c v") 'net-search-androiddev)
+
+;;search php dev site
+;; site:www.w3schools.com
+(defun net-search-phpdev ()
+  "Php the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "http://php.net/results.php?q="
+    (url-hexify-string (if mark-active
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "PHP-Dev: "))))))
+
+(global-set-key (kbd "C-c p") 'net-search-phpdev)
+
+;;search w3 schools site
+
+(defun net-search-w3 ()
+  "w3 the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "https://www.google.jo/#q=site:www.w3schools.com+"
+    (url-hexify-string (if mark-active
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "W3-Schools: "))))))
+
+(global-set-key (kbd "C-c h") 'net-search-w3)
+
+;;Search youtube
 
 (defun net-search-youtube ()
   "Youtube the selected region if any, display a query prompt otherwise."
