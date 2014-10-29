@@ -120,3 +120,32 @@
 
 
 (global-set-key (kbd "C-c t") 'w3-tidy-page)
+
+
+
+;; Google translate fuction 
+
+(defun net-translate-english ()
+  "Google the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "https://translate.google.com/#en/ar/"
+    (url-hexify-string (if mark-active
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "To Arabic: "))))))
+
+(global-set-key (kbd "C-c o") 'net-translate-english)
+
+
+(defun net-translate-arabic ()
+  "Google the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "https://translate.google.com/#ar/en/"
+    (url-hexify-string (if mark-active
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "To English: "))))))
+
+(global-set-key (kbd "C-c i") 'net-translate-arabic)
