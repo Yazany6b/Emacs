@@ -75,6 +75,10 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
+(autoload 'vbnet-mode "vbnet-mode" "Mode for editing VB.NET code." t)
+   (setq auto-mode-alist (append '(("\\.\\(frm\\|bas\\|cls\\|vb\\)$" .
+                                 vbnet-mode)) auto-mode-alist))
+
 (setq inhibit-startup-message t)
 
 ;;initiate the org mode and assign keys to it
