@@ -21,6 +21,7 @@
 ;; Add emacs folder to the path
 (add-to-list 'load-path "~/emacs/")
 (add-to-list 'load-path "~/emacs/org-lisp/")
+;;(add-to-list 'load-path "~/emacs/tramp/lisp/")
 
 (setq grep-find-command "find . -name '.svn' -prune -o -name 'data' -prune -o -name '*' ! -name '*~' -print0 | xargs -0 grep -H -n -i -s ")
 
@@ -49,9 +50,16 @@
 
 (global-set-key [f4] 'w32explore)
 
+(defun run-local-php-file()
+  (interactive)
+  (when buffer-file-name
+    (w32-shell-execute "open" "chrome.exe" (concat "http://localhost/"
+				   (replace-regexp-in-string "c:/xampp/htdocs/" "" buffer-file-name)))))
+
+(global-set-key [f6] 'run-local-php-file)
 
 (global-unset-key "\C-z")
-(global-unset-key "\C-x z")
+(global-unset-key "\C-xz")
 
 ;; create an invisible backup directory and make the backups also invisable
 (defun make-backup-file-name (filename)
@@ -62,7 +70,6 @@
 (file-name-directory filename)))
 
 (load "email-conf.el")
-(load "undo-tree.el")
 (load "web-mode.el")
 (load "web-search.el")
 (load "auto-complete-nxml.el")
@@ -75,10 +82,6 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
-(autoload 'vbnet-mode "vbnet-mode" "Mode for editing VB.NET code." t)
-   (setq auto-mode-alist (append '(("\\.\\(frm\\|bas\\|cls\\|vb\\)$" .
-                                 vbnet-mode)) auto-mode-alist))
-
 (setq inhibit-startup-message t)
 
 ;;initiate the org mode and assign keys to it
@@ -89,6 +92,13 @@
 (global-set-key "\C-cb" 'org-iswitchb)
 
 (setq org-agenda-files '("~/orgs/"))
+ 
+(load "undo-tree.el")
+(load "mytramp.el")
 
-(require 'ido)
-(ido-mode t)
+(load "ts-mode.el")
+
+(global-set-key (kbd "M-<left>")  'windmove-left)
+(global-set-key (kbd "M-<right>") 'windmove-right)
+(global-set-key (kbd "M-<up>")    'windmove-up)
+(global-set-key (kbd "M-<down>")  'windmove-down)
