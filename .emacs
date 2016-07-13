@@ -4,7 +4,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tango-dark)))
- '(custom-safe-themes (quote ("0e7397d2f61fc2144d262eba45f1b3c7893463831b9cbeaaf480ea613225a25f" default)))
  '(org-agenda-files nil)
  '(send-mail-function nil))
 (custom-set-faces
@@ -21,7 +20,6 @@
 ;; Add emacs folder to the path
 (add-to-list 'load-path "~/emacs/")
 (add-to-list 'load-path "~/emacs/org-lisp/")
-;;(add-to-list 'load-path "~/emacs/tramp/lisp/")
 
 (setq grep-find-command "find . -name '.svn' -prune -o -name 'data' -prune -o -name '*' ! -name '*~' -print0 | xargs -0 grep -H -n -i -s ")
 
@@ -39,6 +37,13 @@
   (w32-shell-execute "open" "studio64.exe" buffer-file-name)))
 
 (global-set-key [f3] 'open-with-android-studio)
+
+(defun open-with-vstudio()
+  (interactive)
+  (when buffer-file-name
+  (w32-shell-execute "open" "devenv.exe" (concat "/Edit " (shell-quote-argument buffer-file-name)) )))
+
+(global-set-key [f5] 'open-with-vstudio)
 
 (defun w32explore (file)
     "Open Windows Explorer to FILE (a file or a folder)."
@@ -69,7 +74,9 @@
 (concat backups-dir "." (file-name-nondirectory filename) "~")
 (file-name-directory filename)))
 
+(load "web-search.el")
 (load "email-conf.el")
+(load "undo-tree.el")
 (load "web-mode.el")
 (load "web-search.el")
 (load "auto-complete-nxml.el")
@@ -81,6 +88,10 @@
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+(autoload 'vbnet-mode "vbnet-mode" "Mode for editing VB.NET code." t)
+   (setq auto-mode-alist (append '(("\\.\\(frm\\|bas\\|cls\\|vb\\)$" .
+                                 vbnet-mode)) auto-mode-alist))
 
 (setq inhibit-startup-message t)
 
