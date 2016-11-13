@@ -4,6 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (tango-dark)))
+ '(custom-safe-themes
+   (quote
+    ("0e7397d2f61fc2144d262eba45f1b3c7893463831b9cbeaaf480ea613225a25f" default)))
  '(org-agenda-files nil)
  '(send-mail-function nil))
 (custom-set-faces
@@ -132,3 +135,15 @@
 (global-set-key (kbd "M-<right>") 'windmove-right)
 (global-set-key (kbd "M-<up>")    'windmove-up)
 (global-set-key (kbd "M-<down>")  'windmove-down)
+
+(put 'erase-buffer 'disabled nil)
+
+(setq ring-bell-function 'ignore)
+
+(require 'package)
+(package-initialize)
+
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(load "css-complete.el")
